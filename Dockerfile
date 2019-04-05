@@ -7,4 +7,4 @@ RUN apk update
 RUN apk add chromium chromium-chromedriver
 RUN pip install selenium pytest
 COPY tests /tests
-CMD [ "pytest /tests" ]
+CMD [ "pytest /tests/test_careers_page.py" ]
