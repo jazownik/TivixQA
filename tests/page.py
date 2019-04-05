@@ -55,3 +55,7 @@ class CareersPage(BasePage):
     def click_openings_button(self):
         element = self.driver.find_element(*CareersPageLocators.CURRENT_OPENINIGS_BUTTON)
         element.click()
+
+class JobsPage(BasePage):
+    def is_title_matches(self):
+        return "Tivix" in self.driver.title
