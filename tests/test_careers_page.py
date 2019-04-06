@@ -48,16 +48,22 @@ class Test_Shortest_Path_to_Careers_Page(BaseTest):
     def test_main_page_is_correct(self, start_url):
         self.driver.get(start_url)
         browser = page.MainPage(self.driver)
+        browser.driver.save_screenshot("main_page_short.png")
+        allure.attach.file(source="main_page_short.png", name="main_page", attachment_type=allure.attachment_type.PNG)
         assert browser.is_title_matches(), "Tivix title doesn't match."
     @allure.step
     def test_career_page_is_correct_after_clicking_career_button(self):
         browser = page.MainPage(self.driver)
         browser.click_careers_button()
+        browser.driver.save_screenshot("careers_page_short.png")
+        allure.attach.file(source="careers_page_short.png", name="careers_page", attachment_type=allure.attachment_type.PNG)
         new_page = page.CareersPage(self.driver)
         assert new_page.is_title_matches(), "Careers page unreachable"
     @allure.step
     def test_job_page_after_clicking_current_openings_button(self):
          browser = page.CareersPage(self.driver)
          browser.click_openings_button()
+         browser.driver.save_screenshot("jobs_page_short.png")
+         allure.attach.file(source="jobs_page_short.png", name="jobs_page_short", attachment_type=allure.attachment_type.PNG)
          new_page = page.JobsPage(self.driver)
          assert new_page.is_title_matches(), "Jobs page title doesn't match"

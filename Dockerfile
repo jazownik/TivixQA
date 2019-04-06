@@ -7,4 +7,5 @@ RUN apk update
 RUN apk add chromium chromium-chromedriver
 RUN pip install selenium pytest allure-pytest
 COPY tests /tests
+RUN mkdir /results
 CMD [ "pytest /tests/test_careers_page.py" ]
